@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sheung - Web Developer Test</title>
+  <meta name="description" content="Sheung - Web Developer Test">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" id="main-css" type="text/css" href="assets/css/style.css">
+</head>
+<body id="main-body">
+  <header>
+    <div class="container">
+      <div class="row">
+        <div id="top-nav" class="w-100">
+          <ul class="list-unstyled list-inline m-0 f-end">
+            <li><a class="social" href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a class="social" href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="social" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">My Dashboard</a></li>
+          </ul>
+        </div>
+        <div id="bottom-nav" class="w-100 f-bwtn">
+          <div class="logo-wrapper">
+            <a href="index.html">
+              <img alt="Logo" class="img-fluid" src="https://i.imgur.com/9fx89Br.png">
+            </a>
+          </div>
+          <div class="m-btn">
+            <button onclick="openMenu()"><i class="fas fa-bars"></i></button>
+          </div>
+          <div class="main-menu">
+            <button id="closeside" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+            <ul class="list-unstyled list-inline m-0">
+              <li id="menu-item"><a href="#">Products</a></li>
+              <li id="menu-item"><a href="#">Safety Tools</a></li>
+              <li id="menu-item"><a id="menu-item" href="#">Training</a></li>
+              <li id="menu-item"><a href="#">Engagement</a></li>
+              <li id="dropdown-menu-item" class="dropdown">
+                <a onclick="openBtn()" href="#">Membership</a>
+                <div class="dropdown-menu-wrapper">
+                  <ul class="list-unstyled list-inline dropdown-menu">
+                    <li><a href="#">Latest News</a></li>
+                    <li><a href="#">Subscribe to Newsletters</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Publications</a></li>
+                  </ul>
+                  <a onclick="closeBtn()" href="#" id="close"><i class="fas fa-times-circle"></i></a>
+                </div>
+              </li>
+              <li id="menu-item"><a href="#">News</a></li>
+              <li id="menu-item"><a href="#">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="content"></div>
+  <footer>
+    <script src="https://kit.fontawesome.com/9f677577aa.js" crossorigin="anonymous"></script>
+  </footer>
+  <script>
+
+    // Open and Closing of Dropdown Menu
+
+    function openBtn() {
+      var element = document.getElementsByClassName("dropdown")[0];
+      element.className = "dropdown open";
+    }
+
+    function closeBtn() {
+      var element = document.getElementsByClassName("dropdown")[0];
+      element.className = "dropdown";
+    }
+
+    // Clicking outside of dropdown menu will close it
+
+    const target = document.querySelector('#dropdown-menu-item')
+
+    document.addEventListener('click', (event) => {
+      const withinBoundaries = event.composedPath().includes(target)
+
+      if (withinBoundaries) {
+        
+      } else {
+         var element = document.getElementsByClassName("dropdown")[0];
+         element.className = "dropdown";
+      } 
+
+    })
+
+    //Triggers confirmation dialog box when social media is clicked
+
+    var aElems = document.getElementsByClassName('social');
+
+    for (var i = 0, len = aElems.length; i < len; i++) {
+        aElems[i].onclick = function() {
+            var check = confirm("Are you sure you want to leave?");
+            if (check == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
+    }
+
+    //Open and Close Mobile Menu
+
+    function openMenu() {
+      var element = document.getElementsByClassName("main-menu")[0];
+      element.style.width = "250px";
+      element.className = "main-menu show";
+    }
+
+    function closeMenu() {
+      var element = document.getElementsByClassName("main-menu")[0];
+      element.style.width = "0px";
+      element.className = "main-menu";
+    }
+
+  </script>
+</body>
+</html>
